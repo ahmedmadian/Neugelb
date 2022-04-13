@@ -16,6 +16,7 @@
 		DEAFB9FA28077DF6008BE02E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFB9F928077DF6008BE02E /* MainCoordinator.swift */; };
 		DEAFB9FD28078013008BE02E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFB9FC28078013008BE02E /* Movie.swift */; };
 		DEAFB9FF28078259008BE02E /* JSONWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFB9FE28078259008BE02E /* JSONWrapper.swift */; };
+		DEAFBA0228078300008BE02E /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFBA0128078300008BE02E /* MoviesRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DEAFB9F928077DF6008BE02E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		DEAFB9FC28078013008BE02E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		DEAFB9FE28078259008BE02E /* JSONWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONWrapper.swift; sourceTree = "<group>"; };
+		DEAFBA0128078300008BE02E /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		DEAFB9DF28077B1F008BE02E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				DEAFBA00280782DF008BE02E /* DataRepository */,
 				DEAFB9FB28077FFD008BE02E /* Model */,
 				DEAFB9F628077D97008BE02E /* Coordinators */,
 				DEAFB9F428077BAF008BE02E /* Application */,
@@ -106,6 +109,14 @@
 				DEAFB9FE28078259008BE02E /* JSONWrapper.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DEAFBA00280782DF008BE02E /* DataRepository */ = {
+			isa = PBXGroup;
+			children = (
+				DEAFBA0128078300008BE02E /* MoviesRepository.swift */,
+			);
+			path = DataRepository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 				DEAFB9F828077DB0008BE02E /* Coordinator.swift in Sources */,
 				DEAFB9E528077B1F008BE02E /* ViewController.swift in Sources */,
 				DEAFB9FD28078013008BE02E /* Movie.swift in Sources */,
+				DEAFBA0228078300008BE02E /* MoviesRepository.swift in Sources */,
 				DEAFB9E128077B1F008BE02E /* AppDelegate.swift in Sources */,
 				DEAFB9FA28077DF6008BE02E /* MainCoordinator.swift in Sources */,
 				DEAFB9E328077B1F008BE02E /* SceneDelegate.swift in Sources */,
