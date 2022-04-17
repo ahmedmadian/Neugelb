@@ -14,13 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let rootViewController = UINavigationController()
-        let mainCoordinator = MainCoordinator(navigationController: rootViewController)
-        mainCoordinator.start()
+        let initialViewController = UINavigationController()
+        initialViewController.setRootRoute(MoviesWireframe())
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = rootViewController
+        window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
     }
 }

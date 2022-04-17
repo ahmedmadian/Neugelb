@@ -9,6 +9,17 @@ import UIKit
 
 extension UIColor {
     enum Neugelb {
-        static let BACKGROUND_COLOR = UIColor(red: 25 / 255, green: 25 / 255, blue: 25 / 255, alpha: 1)
+        enum Text {
+            static let TEXT_PRIMARY: UIColor = .black
+        }
+
+        enum Background {
+            static let PRIMARY: UIColor = UIColor(red: 240 / 255, green: 238 / 255, blue: 235 / 255, alpha: 1)
+            static let SURFACE: UIColor = .white
+        }
+
+        enum Highlight {
+            static let PRIMARY: UIColor = .systemBlue
+        }
     }
 }
