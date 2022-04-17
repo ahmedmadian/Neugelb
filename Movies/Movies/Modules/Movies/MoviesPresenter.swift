@@ -60,16 +60,38 @@ class MoviesPresenter {
         dispatchGroup.notify(queue: .main) {
             self.groupedMovies[MoviesSections.watched.rawValue] = movies
                 .filter({ $0.isWatched })
-                .sorted(by: { $0.rating > $1.rating && $0.title > $1.title})
+                .sorted(by: {
+                    if $0.rating == $1.rating {
+                        return $0.title < $1.title
+                    }
+
+                    return $0.rating > $1.rating
+                })
                 .map({ MovieViewModel(movie: $0) })
             
             self.groupedMovies[MoviesSections.toWatch.rawValue] = movies
                 .filter({ !$0.isWatched })
+                .sorted(by: {
+                    if $0.rating == $1.rating {
+                        return $0.title < $1.title
+                    }
+
+                    return $0.rating > $1.rating
+                })
                 .map({ MovieViewModel(movie: $0) })
 
-            self.groupedMovies[MoviesSections.favourites.rawValue] = favouriteMovieIds.compactMap { favourite in
-                movies.first(where: { $0.id == favourite.id })
-            }.map({ MovieViewModel(movie: $0) })
+            self.groupedMovies[MoviesSections.favourites.rawValue] = favouriteMovieIds
+                .compactMap { favourite in
+                    movies.first(where: { $0.id == favourite.id })
+                }
+                .sorted(by: {
+                    if $0.rating == $1.rating {
+                        return $0.title < $1.title
+                    }
+
+                    return $0.rating > $1.rating
+                })
+                .map({ MovieViewModel(movie: $0) })
 
             completionHandler(error)
         }
@@ -159,5 +181,15 @@ extension MoviesPresenter: MoviesPresenterProtocol {
             view.scrollToItem(at: targetIndexPath)
         }
     }
-    
+
+    func didTapNextButton() {
+        guard
+            let selectedIndexPath = selectedIndexPaths.first,
+            let selectedMovieViewModel = groupedMovies[selectedIndexPath.section]?[selectedIndexPath.row]
+        else {
+            return
+        }
+
+        wireframe.navigate(to: .detail(selectedMovieViewModel))
+    }
 }

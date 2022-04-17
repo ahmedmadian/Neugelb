@@ -11,8 +11,12 @@ class MovieViewModel {
     // MARK: - Properties
 
     let id: Int
-    let title: String?
+    let title: String
     let imageURL: URL?
+    let overview: String
+    let releaseDate: String?
+    let rating: Double
+    let originalLanguage: String
     private(set) var isSelected: Bool
 
     // MARK: - Init
@@ -23,6 +27,10 @@ class MovieViewModel {
         // TODO: - Should be removed from here
         let urlString = "https://image.tmdb.org/t/p/w500/\(movie.posterPath ?? "")"
         self.imageURL = URL(string: urlString)
+        self.overview = movie.overview
+        self.releaseDate = movie.releaseDate
+        self.rating = movie.rating
+        self.originalLanguage = movie.originalLanguage
         self.isSelected = isSelected
     }
 

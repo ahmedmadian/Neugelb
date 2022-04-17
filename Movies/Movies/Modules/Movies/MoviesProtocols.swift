@@ -19,6 +19,7 @@ protocol MoviesPresenterProtocol: PresenterProtocol {
     func getMovieViewModelForCell(at indexPath: IndexPath) -> MovieViewModel?
     func getTitle(for section: Int) -> String?
     func didSelectItem(at indexPath: IndexPath)
+    func didTapNextButton()
 }
 
 protocol MoviesInteractorProtocol: InteractorProtocol {
@@ -31,5 +32,5 @@ protocol MoviesWireframeProtocol: WireframeProtocol {
 }
 
 enum MoviesWireframeNavigationOption {
-    case detail(Movie)
+    case detail(MovieViewModel)
 }

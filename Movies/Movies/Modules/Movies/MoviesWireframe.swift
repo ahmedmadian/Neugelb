@@ -28,9 +28,9 @@ class MoviesWireframe: BaseWireframe {
 extension MoviesWireframe: MoviesWireframeProtocol {
     func navigate(to option: MoviesWireframeNavigationOption) {
         switch option {
-        case .detail(let movie):
-            // TODO: Naivgate
-            print(movie)
+        case .detail(let movieViewModel):
+            let movieDetailWireframe = MovieDetailWireframe(movieViewModel: movieViewModel)
+            navigationController?.push(route: movieDetailWireframe)
         }
     }
 }

@@ -149,7 +149,7 @@ class MoviesViewController: BaseViewController {
     // MARK: - Actions
 
     @objc private func didTapNextButton() {
-        // TODO: - Navigate to movie-detail screen.
+        presenter?.didTapNextButton()
     }
 
     private func updateNextButtonStatus() {
