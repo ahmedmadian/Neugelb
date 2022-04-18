@@ -14,8 +14,8 @@ class MoviesWireframe: BaseWireframe {
         let viewController = MoviesViewController()
         super.init(viewController: viewController)
 
-        let moviesRepository = MoviesRepository()
-        let moviesInteractor = MoviesInteractor(moviesRepository: moviesRepository)
+        let moviesService = MoviesService()
+        let moviesInteractor = MoviesInteractor(moviesService: moviesService)
         let moviesPresenter = MoviesPresenter(view: viewController,
                                               interactor: moviesInteractor,
                                               wireframe: self)

@@ -1,13 +1,13 @@
 //
-//  JSONWrapper.swift
+//  JSONResponse.swift
 //  Movies
 //
-//  Created by Ahmed Madian on 14.04.22.
+//  Created by Ahmed Madian on 18.04.22.
 //
 
 import Foundation
 
-struct JSONWrapper<T>: Codable where T: Codable {
+struct JSONResponse<T>: Codable where T: Codable {
     let results: T
 
     enum CodingKeys: String, CodingKey {

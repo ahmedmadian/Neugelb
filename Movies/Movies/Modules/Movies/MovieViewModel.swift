@@ -25,7 +25,7 @@ class MovieViewModel {
         self.id = movie.id
         self.title = movie.title
         // TODO: - Should be removed from here
-        let urlString = "https://image.tmdb.org/t/p/w500/\(movie.posterPath ?? "")"
+        let urlString = "\(APIConstants.TMDB_IMAGES_BASE_URL)\(movie.posterPath ?? "")"
         self.imageURL = URL(string: urlString)
         self.overview = movie.overview
         self.releaseDate = movie.releaseDate

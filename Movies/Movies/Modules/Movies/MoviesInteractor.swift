@@ -8,12 +8,12 @@
 import Foundation
 
 class MoviesInteractor {
-    private let moviesRepository: MoviesRepository
+    private let moviesService: MoviesServiceProtocol
 
     // MARK: - Init
 
-    init(moviesRepository: MoviesRepository) {
-        self.moviesRepository = moviesRepository
+    init(moviesService: MoviesServiceProtocol) {
+        self.moviesService = moviesService
     }
 }
 
@@ -21,13 +21,13 @@ class MoviesInteractor {
 
 extension MoviesInteractor: MoviesInteractorProtocol {
     func fetchMovies(completionHandler: @escaping (Result<[Movie], Error>) -> Void) {
-        moviesRepository.fetchMovies { result in
+        moviesService.fetchMovies { result in
             completionHandler(result)
         }
     }
 
     func fetchFavourites(completionHandler: @escaping (Result<[Favourite], Error>) -> Void) {
-        moviesRepository.fetchFavourites { result in
+        moviesService.fetchFavourites { result in
             completionHandler(result)
         }
     }
