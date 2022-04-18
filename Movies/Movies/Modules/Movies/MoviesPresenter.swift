@@ -24,7 +24,6 @@ class MoviesPresenter {
         self.selectedIndexPaths = []
     }
 
-    // TODO:- Move it to Interactor
     private func fetchMovies(completionHandler: @escaping (Error?) -> Void) {
         var movies = [Movie]()
         var favouriteMovieIds = [Favourite]()
@@ -60,41 +59,31 @@ class MoviesPresenter {
         dispatchGroup.notify(queue: .main) {
             self.groupedMovies[MoviesSections.watched.rawValue] = movies
                 .filter({ $0.isWatched })
-                .sorted(by: {
-                    if $0.rating == $1.rating {
-                        return $0.title < $1.title
-                    }
-
-                    return $0.rating > $1.rating
-                })
+                .sorted(by: self.sortMoviesByRatingAndTitle(_:_:))
                 .map({ MovieViewModel(movie: $0) })
-            
+
             self.groupedMovies[MoviesSections.toWatch.rawValue] = movies
                 .filter({ !$0.isWatched })
-                .sorted(by: {
-                    if $0.rating == $1.rating {
-                        return $0.title < $1.title
-                    }
-
-                    return $0.rating > $1.rating
-                })
+                .sorted(by: self.sortMoviesByRatingAndTitle(_:_:))
                 .map({ MovieViewModel(movie: $0) })
 
             self.groupedMovies[MoviesSections.favourites.rawValue] = favouriteMovieIds
                 .compactMap { favourite in
                     movies.first(where: { $0.id == favourite.id })
                 }
-                .sorted(by: {
-                    if $0.rating == $1.rating {
-                        return $0.title < $1.title
-                    }
-
-                    return $0.rating > $1.rating
-                })
+                .sorted(by: self.sortMoviesByRatingAndTitle(_:_:))
                 .map({ MovieViewModel(movie: $0) })
 
             completionHandler(error)
         }
+    }
+
+    private func sortMoviesByRatingAndTitle(_ lhs: Movie, _ rhs: Movie) -> Bool {
+        if lhs.rating == rhs.rating {
+            return lhs.title < rhs.title
+        }
+
+        return lhs.rating > rhs.rating
     }
 }
 

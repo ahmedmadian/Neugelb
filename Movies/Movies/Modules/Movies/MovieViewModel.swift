@@ -24,7 +24,6 @@ class MovieViewModel {
     init(movie: Movie, isSelected: Bool = false) {
         self.id = movie.id
         self.title = movie.title
-        // TODO: - Should be removed from here
         let urlString = "\(APIConstants.TMDB_IMAGES_BASE_URL)\(movie.posterPath ?? "")"
         self.imageURL = URL(string: urlString)
         self.overview = movie.overview

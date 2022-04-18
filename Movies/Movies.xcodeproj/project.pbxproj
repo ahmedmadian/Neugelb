@@ -207,8 +207,8 @@
 		DEAFB9DF28077B1F008BE02E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				DE4A97AE280CB4B800838E14 /* Networking */,
 				DEAFB9F428077BAF008BE02E /* Application */,
+				DE4A97AE280CB4B800838E14 /* Networking */,
 				DEAFBA0328078583008BE02E /* Library */,
 				DEAFB9FB28077FFD008BE02E /* Entities */,
 				DEAFBA08280788F6008BE02E /* Modules */,
