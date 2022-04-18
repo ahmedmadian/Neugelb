@@ -64,17 +64,17 @@ class BaseService {
         self.task?.cancel()
     }
 
-    private func buildRequest(from route: EndpointType) throws -> URLRequest {
-        var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path),
+    func buildRequest(from endpoint: EndpointType) throws -> URLRequest {
+        var request = URLRequest(url: endpoint.baseURL.appendingPathComponent(endpoint.path),
                                  cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                  timeoutInterval: 10.0)
 
-        request.httpMethod = route.httpMethod.rawValue
+        request.httpMethod = endpoint.httpMethod.rawValue
 
         return request
     }
 
-    private func handleUnsuccessfulStatusCode(_ statusCode: Int) -> BaseServiceError {
+    func handleUnsuccessfulStatusCode(_ statusCode: Int) -> BaseServiceError {
         switch statusCode {
         case 401...500: return .authenticationError
         case 501...599: return .badRequest
